@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonprofit Website Requirements Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        .form-section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        .checkbox-item {
+            margin-bottom: 8px;
+        }
+        .file-upload {
+            margin-top: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .required {
+            color: red;
+        }
+        .note {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .help-text {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .section-intro {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 250px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nonprofit Website Requirements Form</h1>
+    <p>Please fill out this form to help us understand your nonprofit's needs for a new website. Fields marked with <span class="required">*</span> are required.</p>
+    <p class="section-intro">Don't worry if you don't understand all the technical terms - we've included explanations to help you. If you're unsure about any section, you can leave it blank and we'll discuss it during our consultation.</p>
+    
+    <form id="nonprofitForm" action="https://formspree.io/f/xzzekjzn" method="post" enctype="multipart/form-data">
+        <div class="form-section">
+            <h2>Organization Information</h2>
+            <p class="section-intro">This section helps us understand the basics about your organization.</p>
+            
+            <label for="orgName">Organization Name <span class="required">*</span></label>
+            <input type="text" id="orgName" name="orgName" required>
+            
+            <label for="orgMission">Mission Statement <span class="required">*</span></label>
+            <textarea id="orgMission" name="orgMission" required></textarea>
+            <p class="help-text">Your mission statement should briefly describe your organization's purpose and goals.</p>
+            
+            <label for="orgWebsite">Current Website (if any)</label>
+            <input type="url" id="orgWebsite" name="orgWebsite">
+            <p class="help-text">If you already have a website, please enter its address (e.g., www.yourorganization.org)</p>
+            
+            <label for="orgSize">Organization Size</label>
+            <select id="orgSize" name="orgSize">
+                <option value="">Select size</option>
+                <option value="small">Small (1-10 employees)</option>
+                <option value="medium">Medium (11-50 employees)</option>
+                <option value="large">Large (51+ employees)</option>
+            </select>
+        </div>
+        
+        <div class="form-section">
+            <h2>Content & Functionality</h2>
+            <p class="section-intro">This section helps us understand what your website needs to do and what content it will contain.</p>
+            
+            <label>Primary Purpose of Website <span class="required">*</span></label>
+            <p class="help-text">What is the main reason you need a website? (You can select multiple options)</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="purposeInfo" name="purpose[]" value="information">
+                    <label for="purposeInfo">Information about your organization</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="purposeFund" name="purpose[]" value="fundraising">
+                    <label for="purposeFund">Fundraising</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="purposeVolunteer" name="purpose[]" value="volunteer">
+                    <label for="purposeVolunteer">Volunteer Recruitment</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="purposeProgram" name="purpose[]" value="programs">
+                    <label for="purposeProgram">Program Information</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="purposeOther" name="purpose[]" value="other">
+                    <label for="purposeOther">Other (please specify)</label>
+                    <input type="text" id="purposeOtherText" name="purposeOtherText">
+                </div>
+            </div>
+            
+            <label>Content Types to Update Regularly</label>
+            <p class="help-text">What kind of information will you need to update on your website? (You can select multiple options)</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentNews" name="content[]" value="news">
+                    <label for="contentNews">News/Blog Posts</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentEvents" name="content[]" value="events">
+                    <label for="contentEvents">Events Calendar</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentStaff" name="content[]" value="staff">
+                    <label for="contentStaff">Staff/Team Information</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentPrograms" name="content[]" value="programs">
+                    <label for="contentPrograms">Program Descriptions</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentDonate" name="content[]" value="donate">
+                    <label for="contentDonate">Donation Information</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="contentVolunteer" name="content[]" value="volunteer">
+                    <label for="contentVolunteer">Volunteer Opportunities</label>
+                </div>
+            </div>
+            
+            <label>Required Functionality</label>
+            <p class="help-text">What features do you need on your website? (You can select multiple options)</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcDonate" name="functionality[]" value="donation">
+                    <label for="funcDonate">Donation Processing <span class="tooltip">?<span class="tooltiptext">Allows visitors to make donations directly on your website</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcEvents" name="functionality[]" value="events">
+                    <label for="funcEvents">Event Registration <span class="tooltip">?<span class="tooltiptext">Allows visitors to sign up for your events online</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcVolunteer" name="functionality[]" value="volunteer">
+                    <label for="funcVolunteer">Volunteer Sign-up Forms <span class="tooltip">?<span class="tooltiptext">Allows potential volunteers to apply online</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcNewsletter" name="functionality[]" value="newsletter">
+                    <label for="funcNewsletter">Newsletter Subscription <span class="tooltip">?<span class="tooltiptext">Allows visitors to sign up for your email newsletter</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcContact" name="functionality[]" value="contact">
+                    <label for="funcContact">Contact Forms <span class="tooltip">?<span class="tooltiptext">Allows visitors to send you messages through the website</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcLogin" name="functionality[]" value="login">
+                    <label for="funcLogin">Member Login Area <span class="tooltip">?<span class="tooltiptext">A private area where members can log in to access special content</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="funcBlog" name="functionality[]" value="blog">
+                    <label for="funcBlog">Blog Commenting <span class="tooltip">?<span class="tooltiptext">Allows visitors to leave comments on your blog posts</span></span></label>
+                </div>
+            </div>
+            
+            <label for="existingContent">Existing Content to Migrate</label>
+            <textarea id="existingContent" name="existingContent" placeholder="Describe the amount and format of existing content that needs to be migrated to the new site"></textarea>
+            <p class="help-text">If you have existing content (text, photos, documents) that needs to be moved to the new website, please describe it here.</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Design & Branding</h2>
+            <p class="section-intro">This section helps us understand your visual preferences for the website.</p>
+            
+            <label for="logo">Logo File</label>
+            <input type="file" id="logo" name="logo" class="file-upload" accept="image/*">
+            <p class="note">Please upload your logo in high resolution (preferably PNG or SVG format)</p>
+            <p class="help-text">If you don't have a logo file ready, you can skip this for now and send it later.</p>
+            
+            <label for="brandColors">Brand Colors</label>
+            <textarea id="brandColors" name="brandColors" placeholder="List your brand colors (hex codes if available)"></textarea>
+            <p class="help-text">If you have specific colors associated with your brand, please list them here. If you don't know the hex codes, you can describe the colors (e.g., "navy blue and gold").</p>
+            
+            <label for="typography">Typography Preferences</label>
+            <textarea id="typography" name="typography" placeholder="Describe any font preferences or requirements"></textarea>
+            <p class="help-text">If you have specific font preferences, please describe them here. If not, we can suggest fonts that match your brand.</p>
+            
+            <label for="exampleSites">Example Websites You Like</label>
+            <textarea id="exampleSites" name="exampleSites" placeholder="List URLs of websites you like as examples"></textarea>
+            <p class="help-text">If you've seen other websites you like, please share their addresses here. This helps us understand your style preferences.</p>
+            
+            <label for="accessibility">Accessibility Requirements</label>
+            <select id="accessibility" name="accessibility">
+                <option value="">Select level</option>
+                <option value="basic">Basic accessibility</option>
+                <option value="wcag2aa">WCAG 2.0 Level AA</option>
+                <option value="wcag2aaa">WCAG 2.0 Level AAA</option>
+                <option value="custom">Custom requirements</option>
+            </select>
+            <p class="help-text">Accessibility refers to how easily people with disabilities can use your website. If you're not sure, select "Basic accessibility" and we can discuss this further.</p>
+            <textarea id="accessibilityDetails" name="accessibilityDetails" placeholder="Describe any specific accessibility features needed"></textarea>
+        </div>
+        
+        <div class="form-section">
+            <h2>Technical & Management</h2>
+            <p class="section-intro">This section helps us understand who will be managing the website and what technical requirements you have.</p>
+            
+            <label for="contentManagers">Who will be responsible for updating the website?</label>
+            <textarea id="contentManagers" name="contentManagers" placeholder="Names and roles of people who will update the website"></textarea>
+            <p class="help-text">Please list the people who will be adding or changing content on the website after it's built.</p>
+            
+            <label for="technicalLevel">Technical Comfort Level of Content Managers</label>
+            <select id="technicalLevel" name="technicalLevel">
+                <option value="">Select level</option>
+                <option value="beginner">Beginner (limited technical knowledge)</option>
+                <option value="intermediate">Intermediate (comfortable with basic web tools)</option>
+                <option value="advanced">Advanced (comfortable with technical systems)</option>
+            </select>
+            <p class="help-text">How comfortable are your content managers with using websites and computers in general?</p>
+            
+            <label for="budget">Budget for Website Development</label>
+            <input type="text" id="budget" name="budget" placeholder="Estimated budget for initial development">
+            <p class="help-text">Please provide an estimate of how much you can spend on building the website.</p>
+            
+            <label for="hostingBudget">Budget for Ongoing Hosting/Maintenance</label>
+            <input type="text" id="hostingBudget" name="hostingBudget" placeholder="Monthly/annual budget for hosting and maintenance">
+            <p class="help-text">Websites need to be hosted online (like renting space on the internet) and maintained. Please provide an estimate of how much you can spend monthly or annually on these costs.</p>
+            
+            <label>System Integrations Needed</label>
+            <p class="help-text">Do you need your website to connect with any other software or services? (You can select multiple options)</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="integrateCRM" name="integrations[]" value="crm">
+                    <label for="integrateCRM">CRM Software <span class="tooltip">?<span class="tooltiptext">Customer Relationship Management software - helps you track donors, volunteers, etc.</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="integrateEmail" name="integrations[]" value="email">
+                    <label for="integrateEmail">Email Marketing Platform <span class="tooltip">?<span class="tooltiptext">Software for sending newsletters and email campaigns (like MailChimp, Constant Contact)</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="integrateSocial" name="integrations[]" value="social">
+                    <label for="integrateSocial">Social Media Accounts <span class="tooltip">?<span class="tooltiptext">Connecting your website with Facebook, Twitter, Instagram, etc.</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="integrateAnalytics" name="integrations[]" value="analytics">
+                    <label for="integrateAnalytics">Analytics Tools <span class="tooltip">?<span class="tooltiptext">Tools to track how many people visit your website and what they do there</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="integrateOther" name="integrations[]" value="other">
+                    <label for="integrateOther">Other (please specify)</label>
+                    <input type="text" id="integrateOtherText" name="integrateOtherText">
+                </div>
+            </div>
+            
+            <label for="mobile">Mobile Responsiveness Requirements</label>
+            <select id="mobile" name="mobile">
+                <option value="">Select preference</option>
+                <option value="basic">Basic mobile-friendly</option>
+                <option value="responsive">Fully responsive design</option>
+                <option value="mobileFirst">Mobile-first approach</option>
+            </select>
+            <p class="help-text">Mobile responsiveness refers to how well your website works on phones and tablets. "Basic mobile-friendly" is usually sufficient for most websites.</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Timeline & Process</h2>
+            <p class="section-intro">This section helps us understand your timeline and process preferences.</p>
+            
+            <label for="timeline">Launch Timeline</label>
+            <input type="text" id="timeline" name="timeline" placeholder="When do you need the website launched?">
+            <p class="help-text">When would you like the website to be completed? Please provide a target date if possible.</p>
+            
+            <label for="deadlines">Important Deadlines or Events</label>
+            <textarea id="deadlines" name="deadlines" placeholder="List any important dates or events that should align with the website launch"></textarea>
+            <p class="help-text">Are there any specific events or deadlines that the website launch should align with?</p>
+            
+            <label for="training">Training Requirements</label>
+            <textarea id="training" name="training" placeholder="How many people need training and what level of documentation would be helpful?"></textarea>
+            <p class="help-text">How many people will need to learn how to update the website? Would you like written instructions, video tutorials, or in-person training?</p>
+            
+            <label for="approval">Approval Process</label>
+            <textarea id="approval" name="approval" placeholder="Who has final approval and how many revision rounds do you expect?"></textarea>
+            <p class="help-text">Who needs to approve the website before it launches? How many rounds of changes would you like to be able to make?</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Nonprofit-Specific Requirements</h2>
+            <p class="section-intro">This section helps us understand special requirements for nonprofits.</p>
+            
+            <label for="impact">Impact Metrics</label>
+            <textarea id="impact" name="impact" placeholder="How do you measure and display your organization's impact?"></textarea>
+            <p class="help-text">How do you track and show the difference your organization makes? For example, number of people served, funds raised, etc.</p>
+            
+            <label for="languages">Multilingual Support</label>
+            <select id="languages" name="languages">
+                <option value="">Select option</option>
+                <option value="none">No multilingual support needed</option>
+                <option value="basic">Basic multilingual support (2-3 languages)</option>
+                <option value="advanced">Advanced multilingual support (4+ languages)</option>
+            </select>
+            <p class="help-text">Do you need your website to be available in multiple languages?</p>
+            <textarea id="languageDetails" name="languageDetails" placeholder="Which languages are priorities?"></textarea>
+            
+            <label for="regulations">Nonprofit Regulations</label>
+            <p class="help-text">Do you need to comply with any specific nonprofit regulations on your website? (You can select multiple options)</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="reg501c3" name="regulations[]" value="501c3">
+                    <label for="reg501c3">501(c)(3) Disclosure Requirements <span class="tooltip">?<span class="tooltiptext">Legal requirements for tax-exempt organizations to display certain information</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="regDonation" name="regulations[]" value="donation">
+                    <label for="regDonation">Donation Receipt Requirements <span class="tooltip">?<span class="tooltiptext">Legal requirements for providing receipts to donors</span></span></label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="regPrivacy" name="regulations[]" value="privacy">
+                    <label for="regPrivacy">Privacy Policy Requirements <span class="tooltip">?<span class="tooltiptext">Legal requirements for how you collect and use visitor information</span></span></label>
+                </div>
+            </div>
+            
+            <label for="donorInfo">Donor Information Handling</label>
+            <textarea id="donorInfo" name="donorInfo" placeholder="How do you want to handle donor information and privacy?"></textarea>
+            <p class="help-text">How would you like to collect and store information about donors? Do you have specific privacy requirements?</p>
+            
+            <label for="fundraising">Fundraising Platform Integration</label>
+            <textarea id="fundraising" name="fundraising" placeholder="Which fundraising platforms do you currently use or plan to use?"></textarea>
+            <p class="help-text">Do you use any specific platforms for fundraising (like GoFundMe, DonorBox, etc.) that should connect with your website?</p>
+            
+            <label for="analytics">Analytics Requirements</label>
+            <textarea id="analytics" name="analytics" placeholder="What metrics do you need to track (visitor behavior, conversion rates, donation tracking, etc.)?"></textarea>
+            <p class="help-text">What information would you like to know about the people who visit your website? For example, how many visitors, which pages they view, etc.</p>
+        </div>
+        
+        <div class="form-section">
+            <h2>Additional Information</h2>
+            <p class="section-intro">Is there anything else you'd like to share with us?</p>
+            
+            <label for="additionalInfo">Any other information you'd like to share</label>
+            <textarea id="additionalInfo" name="additionalInfo" placeholder="Please share any other information that would help us understand your needs"></textarea>
+        </div>
+        
+        <div class="form-section">
+            <h2>Contact Information</h2>
+            <p class="section-intro">Please provide your contact information so we can reach you about your submission.</p>
+            
+            <label for="contactName">Your Name <span class="required">*</span></label>
+            <input type="text" id="contactName" name="contactName" required>
+            
+            <label for="contactEmail">Your Email <span class="required">*</span></label>
+            <input type="email" id="contactEmail" name="contactEmail" required>
+            
+            <label for="contactPhone">Your Phone Number</label>
+            <input type="tel" id="contactPhone" name="contactPhone">
+        </div>
+        
+        <button type="submit">Submit Requirements</button>
+    </form>
+    
+    <div id="successMessage" class="success-message">
+        <h3>Thank you for your submission!</h3>
+        <p>We've received your requirements and will be in touch soon to discuss your nonprofit website project.</p>
+    </div>
+    
+    <div id="errorMessage" class="error-message">
+        <h3>There was a problem with your submission</h3>
+        <p>Please try again or contact us directly at your-email@example.com</p>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('nonprofitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(this);
+            
+            // Send the form data to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    this.style.display = 'none';
+                } else {
+                    // Show error message
+                    document.getElementById('errorMessage').style.display = 'block';
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show error message
+                document.getElementById('errorMessage').style.display = 'block';
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html> 
